@@ -4,7 +4,6 @@ scp $filename $username@$ip_proxmox:/$directory\
 # EXTRACT
 tar -xvf $filename.ova
 
-
 # IMPORT OVA
 qm importdisk $vmid $filename.vmdk local-lvm -format qcow2
 
@@ -14,4 +13,11 @@ qm importdisk $vmid $filename.qcow2 local-lvm --format qcow2
 # CHANGE BOOT ORDER TO NEW DISK
 
 
+# HOW TO CONVERT IMAGE
+qemu-img convert -f raw -O qcow2 image.img image.qcow2
+qemu-img convert -f vmdk -O raw image.vmdk image.img
+qemu-img convert -f vmdk -O qcow2 image.vmdk image.qcow2
 
+# REFERENCE
+https://www.itsfullofstars.de/2019/07/import-ova-as-proxmox-vm/
+https://docs.openstack.org/image-guide/convert-images.html
