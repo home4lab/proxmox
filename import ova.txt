@@ -1,0 +1,12 @@
+# UPLOAD TO PROXMOX
+scp $filename $username@$ip_proxmox:/$directory\
+
+# EXTRACT
+tar -xvf $filename.ova
+
+
+# IMPORT OVA
+qm importdisk 101 $filename.vmdk local-lvm -format qcow2
+
+CHANGE BOOT ORDER TO NEW DISK
+
