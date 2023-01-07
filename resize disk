@@ -1,0 +1,5 @@
+1. Delete local-lvm from from proxmox in Web GUI datacenter >> storage
+2. ssh to pve
+3. lvremove /dev/pve/data
+4. lvextend -l +100%FREE /dev/pve/root
+5. resize2fs /dev/pve/root
